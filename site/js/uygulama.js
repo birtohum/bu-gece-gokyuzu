@@ -30,7 +30,7 @@ function geriSayim(g, simdi) {
   if (simdi >= g.bas.ms && simdi <= g.son.ms) return "Şu an geçiyor, hemen bakın!";
   const dk = Math.round((g.bas.ms - simdi) / 60000);
   if (dk < 1) return "Birazdan başlıyor";
-  if (dk < 60) return `${dk} dakika sonra`;
+  if (dk < 60) { const sn = Math.max(0, Math.floor((g.bas.ms - simdi) / 1000)); return `${Math.floor(sn / 60)} dakika ${String(sn % 60).padStart(2, "0")} saniye sonra`; }
   const sa = Math.floor(dk / 60), kalan = dk % 60;
   return kalan ? `${sa} saat ${kalan} dakika sonra` : `${sa} saat sonra`;
 }
@@ -69,7 +69,7 @@ function kubbe(g) {
   h += `<text class="yon-yazi" x="${-yy - 2}" y="0" transform="rotate(-90 ${-yy - 2} 0)">Batı</text>`;
   if (g) {
     if (g.yay.length > 1) h += `<path class="yay" d="${yolD(g.yay)}"/>`;
-    h += `<path class="yol" d="${yolD(g.yol)}"/>`;
+    h += `<path class="yol" pathLength="1" d="${yolD(g.yol)}"/>`;
     const [bx, by] = nokta(g.bas.az, g.bas.el);
     h += `<circle class="bas" cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="5"/>`;
     // Bitişte küçük ok ucu
@@ -78,7 +78,7 @@ function kubbe(g) {
       const [x1, y1] = nokta(...g.yol[n - 2]), [x2, y2] = nokta(...g.yol[n - 1]);
       const a = Math.atan2(y2 - y1, x2 - x1), L = 9;
       const p = (d) => [x2 - L * Math.cos(a + d), y2 - L * Math.sin(a + d)].map((v) => v.toFixed(1)).join(" ");
-      h += `<path class="yol" d="M${p(0.5)}L${x2.toFixed(1)} ${y2.toFixed(1)}L${p(-0.5)}"/>`;
+      h += `<path class="yol" pathLength="1" style="animation-delay:2s" d="M${p(0.5)}L${x2.toFixed(1)} ${y2.toFixed(1)}L${p(-0.5)}"/>`;
     }
     const tx = bx + (bx > 40 ? -8 : 8), anchor = bx > 40 ? "end" : "start";
     h += `<text class="zaman-yazi" x="${tx.toFixed(1)}" y="${(by - 8).toFixed(1)}" text-anchor="${anchor}">${saat(g.bas.ms)}</text>`;
@@ -93,6 +93,7 @@ function siradakiGoster(g, etiket) {
   $("sir-etiket").textContent = etiket;
   $("sir-ad").textContent = g.ad;
   $("sir-saat").innerHTML = `${saat(g.bas.ms)}<small>${geriSayim(g, Date.now())}</small>`;
+  window.__siradaki = g;
   $("sir-cumle").textContent = cumle(g);
   kubbe(g);
   const yas = (Date.now() - Date.parse(g.epoch)) / 3600e3;
@@ -250,6 +251,7 @@ async function baslat() {
     if (Date.now() - sonHesap > 30 * 60e3 || Date.now() > sonuc.gece[1]) { sonHesap = Date.now(); hesapla(); return; }
     goster();
   }, 60e3);
+  setInterval(() => { const k = window.__siradaki; if (k) { const el = document.querySelector("#sir-saat small"); if (el) el.textContent = geriSayim(k, Date.now()); } }, 1000);
 }
 
 baslat();

@@ -72,3 +72,18 @@ button.ikincil { width: 100%; margin-top: 10px; background: transparent; }
 .bilgi li { margin: 0 0 10px; }
 footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--cizgi); color: var(--soluk); font-size: 14px; }
 footer a { color: var(--soluk); }
+
+/* ilk ekran: cevap önce */
+h1 { font-size: clamp(20px, 4.6vw, 26px); color: var(--soluk); font-weight: 600; margin-bottom: 4px; }
+.alt { font-size: 16px; margin-bottom: 18px; }
+#siradaki { padding: 26px 22px 22px; border-color: #3a3220; background: linear-gradient(180deg, #19202f 0%, var(--yuzey) 60%); }
+#siradaki h2 { font-size: clamp(22px, 5vw, 28px); }
+#siradaki .buyuk { font-size: clamp(68px, 19vw, 112px); letter-spacing: -0.04em; line-height: 1; margin: 10px 0 6px; }
+#siradaki .buyuk small { display: block; font-size: 17px; letter-spacing: 0; margin: 8px 0 0; color: var(--vurgu); }
+#kubbe { max-width: 420px; }
+#kubbe .yol { stroke-dasharray: 1; stroke-dashoffset: 1; animation: yol-ciz 1.8s ease-out .3s forwards; }
+#kubbe .bas { animation: bas-nabiz 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes yol-ciz { to { stroke-dashoffset: 0; } }
+@keyframes bas-nabiz { 50% { transform: scale(1.35); opacity: .75; } }
+@media (prefers-reduced-motion: reduce) { #kubbe .yol { animation: none; stroke-dashoffset: 0; } #kubbe .bas { animation: none; } }
+.secim { margin-top: 4px; }

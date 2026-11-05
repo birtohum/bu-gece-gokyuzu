@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="stil.css">
+<link rel="stylesheet" href="stil.css?v=2">
 </head>
 <body>
 <main>
@@ -21,14 +21,6 @@
     <p class="alt">Uzay istasyonları ve parlak uydular, çıplak gözle. Şehrini seç, gerisini hesaplayalım.</p>
   </header>
 
-  <section class="secim" aria-label="Yer seçimi">
-    <label for="il">Şehrin</label>
-    <div class="secim-satir">
-      <select id="il"></select>
-      <button id="konum" type="button">Konumumu kullan</button>
-    </div>
-    <p id="yer-bilgi" class="kucuk"></p>
-  </section>
 
   <p id="durum" class="durum" role="status">Hesaplanıyor…</p>
 
@@ -46,6 +38,15 @@
   <section id="yok" class="kart" hidden>
     <h2 id="yok-baslik">Bu gece uzay istasyonu geçişi yok</h2>
     <p id="yok-metin"></p>
+  </section>
+
+  <section class="secim" aria-label="Yer seçimi">
+    <label for="il">Şehrin</label>
+    <div class="secim-satir">
+      <select id="il"></select>
+      <button id="konum" type="button">Konumumu kullan</button>
+    </div>
+    <p id="yer-bilgi" class="kucuk"></p>
   </section>
 
   <section id="liste-bolum" hidden>
@@ -82,6 +83,6 @@
     <p>Kaynak kodu: <a href="https://github.com/birtohum/bu-gece-gokyuzu">github.com/birtohum/bu-gece-gokyuzu</a> · Apache-2.0</p>
   </footer>
 </main>
-<script type="module" src="js/uygulama.js"></script>
+<script type="module" src="js/uygulama.js?v=2"></script>
 </body>
 </html>
