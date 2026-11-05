@@ -1,0 +1,74 @@
+:root {
+  --zemin: #0d1320;
+  --yuzey: #151d2e;
+  --cizgi: #26314a;
+  --metin: #e8ecf3;
+  --soluk: #9aa5b8;
+  --vurgu: #f2b84b;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--zemin);
+  color: var(--metin);
+  font: 400 17px/1.55 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { max-width: 680px; margin: 0 auto; padding: 28px 16px 48px; }
+h1, h2 { font-family: "Inter Tight", Inter, system-ui, sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+h1 { font-size: clamp(28px, 7vw, 40px); line-height: 1.12; margin: 0 0 10px; }
+h2 { font-size: 22px; line-height: 1.25; margin: 0 0 6px; }
+.alt { color: var(--soluk); margin: 0 0 24px; font-size: 18px; }
+a { color: var(--metin); text-decoration-color: var(--soluk); text-underline-offset: 3px; }
+.kucuk { color: var(--soluk); font-size: 14.5px; margin: 6px 0 0; }
+
+.secim label { display: block; font-weight: 600; margin-bottom: 6px; }
+.secim-satir { display: flex; gap: 10px; flex-wrap: wrap; }
+select, button {
+  font: inherit; color: var(--metin); background: var(--yuzey);
+  border: 1px solid var(--cizgi); border-radius: 10px; padding: 12px 14px; min-height: 48px;
+}
+select { flex: 1 1 220px; font-size: 18px; font-weight: 500; }
+button { cursor: pointer; font-weight: 500; }
+button:hover, select:hover { border-color: var(--soluk); }
+button:focus-visible, select:focus-visible, .liste li:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; }
+button.ikincil { width: 100%; margin-top: 10px; background: transparent; }
+
+.durum { color: var(--soluk); margin: 22px 0 12px; }
+.kart { background: var(--yuzey); border: 1px solid var(--cizgi); border-radius: 14px; padding: 20px 18px; margin: 0 0 28px; }
+.etiket { margin: 0 0 4px; color: var(--vurgu); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; }
+.buyuk { font-family: "Inter Tight", Inter, sans-serif; font-size: 40px; font-weight: 700; line-height: 1.1; margin: 8px 0 4px; font-variant-numeric: tabular-nums; }
+.buyuk small { font-size: 17px; font-weight: 500; color: var(--soluk); font-family: Inter, sans-serif; margin-left: 6px; }
+#sir-cumle, #yok-metin { font-size: 18px; margin: 8px 0 0; }
+
+.kubbe-kutu { margin-top: 18px; }
+#kubbe { display: block; width: 100%; max-width: 340px; margin: 0 auto; }
+#kubbe .halka { fill: none; stroke: var(--cizgi); stroke-width: 1; }
+#kubbe .ufuk { fill: #0a0f1a; stroke: var(--soluk); stroke-width: 1.2; }
+#kubbe .yon-yazi { fill: var(--metin); font: 600 11px Inter, sans-serif; text-anchor: middle; dominant-baseline: middle; }
+#kubbe .derece-yazi { fill: var(--soluk); font: 400 8.5px Inter, sans-serif; }
+#kubbe .yay { fill: none; stroke: var(--soluk); stroke-width: 1.2; stroke-dasharray: 3 3; opacity: 0.7; }
+#kubbe .yol { fill: none; stroke: var(--vurgu); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+#kubbe .bas { fill: var(--vurgu); }
+#kubbe .zaman-yazi { fill: var(--metin); font: 600 10px Inter, sans-serif; paint-order: stroke; stroke: #0a0f1a; stroke-width: 3px; }
+.kubbe-not { text-align: center; max-width: 420px; margin: 8px auto 0; }
+
+.bolum-baslik { margin-top: 8px; }
+.liste { list-style: none; margin: 14px 0 0; padding: 0; border-top: 1px solid var(--cizgi); }
+.liste li {
+  display: grid; grid-template-columns: 64px 1fr; gap: 2px 12px; padding: 12px 6px;
+  border-bottom: 1px solid var(--cizgi); cursor: pointer; border-radius: 6px;
+}
+.liste li:hover { background: var(--yuzey); }
+.liste li[aria-current="true"] { background: var(--yuzey); box-shadow: inset 3px 0 0 var(--vurgu); }
+.liste .saat { font-family: "Inter Tight", Inter, sans-serif; font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; grid-row: span 2; }
+.liste .ad { font-weight: 600; }
+.liste .ad .rozet { font-weight: 500; font-size: 13px; color: var(--vurgu); margin-left: 6px; white-space: nowrap; }
+.liste .ayrinti { color: var(--soluk); font-size: 15px; }
+
+.bilgi { margin-top: 36px; }
+.bilgi ul { padding-left: 20px; margin: 10px 0 0; }
+.bilgi li { margin: 0 0 10px; }
+footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--cizgi); color: var(--soluk); font-size: 14px; }
+footer a { color: var(--soluk); }

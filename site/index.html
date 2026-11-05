@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bu gece başının üstünden ne geçecek?</title>
+<meta name="description" content="Şehrini seç: bu gece çıplak gözle görebileceğin Uluslararası Uzay İstasyonu, Tiangong ve parlak uydu geçişleri, saat ve yönüyle.">
+<meta property="og:title" content="Bu gece başının üstünden ne geçecek?">
+<meta property="og:description" content="Uzay istasyonu ve parlak uydu geçişleri, 81 il için, tarayıcıda hesaplanır.">
+<meta name="theme-color" content="#0d1320">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230d1320'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23f2b84b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Bu gece başının üstünden ne geçecek?</h1>
+    <p class="alt">Uzay istasyonları ve parlak uydular, çıplak gözle. Şehrini seç, gerisini hesaplayalım.</p>
+  </header>
+
+  <section class="secim" aria-label="Yer seçimi">
+    <label for="il">Şehrin</label>
+    <div class="secim-satir">
+      <select id="il"></select>
+      <button id="konum" type="button">Konumumu kullan</button>
+    </div>
+    <p id="yer-bilgi" class="kucuk"></p>
+  </section>
+
+  <p id="durum" class="durum" role="status">Hesaplanıyor…</p>
+
+  <section id="siradaki" class="kart" hidden>
+    <p class="etiket" id="sir-etiket">Sıradaki</p>
+    <h2 id="sir-ad"></h2>
+    <p class="buyuk" id="sir-saat"></p>
+    <p id="sir-cumle"></p>
+    <div class="kubbe-kutu">
+      <svg id="kubbe" viewBox="-130 -130 260 260" role="img" aria-labelledby="kubbe-baslik"><title id="kubbe-baslik">Gökyüzünde izlenecek yol</title></svg>
+      <p class="kucuk kubbe-not">Harita gibi okuyun: üst kuzey, sağ doğu. Ortası tam başınızın üstü, dış çember ufuk. Kalın çizgi uydunun görüneceği kısım, nokta başladığı yer.</p>
+    </div>
+  </section>
+
+  <section id="yok" class="kart" hidden>
+    <h2 id="yok-baslik">Bu gece uzay istasyonu geçişi yok</h2>
+    <p id="yok-metin"></p>
+  </section>
+
+  <section id="liste-bolum" hidden>
+    <h2 class="bolum-baslik" id="liste-baslik">Bu gece görünenler</h2>
+    <p class="kucuk">Satıra dokunursanız yukarıdaki haritada yolu görünür. Saatler Türkiye saatidir.</p>
+    <ol id="liste" class="liste"></ol>
+    <button id="hepsi" type="button" class="ikincil" hidden></button>
+  </section>
+
+  <section class="bilgi">
+    <h2 class="bolum-baslik">Nasıl bakılır?</h2>
+    <ul>
+      <li><strong>Saatten bir iki dakika önce</strong> dışarı çıkın, yazan yöne dönün. Gözünüz karanlığa alışsın.</li>
+      <li>Uydu, yanıp sönmeyen ve gökyüzünü birkaç dakikada sakince geçen <strong>bir ışık noktası</strong> gibi görünür. Uçakların kırmızı-yeşil yanıp sönen ışıkları olur, uyduların olmaz.</li>
+      <li><strong>Yükseklik:</strong> Kolunuzu uzatıp yumruk yapın; bir yumruk ufuktan yaklaşık 10° yukarısıdır. 90° tam tepedir.</li>
+      <li>Uydu birden sönükleşip kaybolursa <strong>Dünya'nın gölgesine girmiştir</strong>; ışığını Güneş'ten alır, kendisi parlamaz.</li>
+    </ul>
+  </section>
+
+  <section class="bilgi">
+    <h2 class="bolum-baslik">Ne kadar doğru?</h2>
+    <ul>
+      <li>Geçişler, uyduların yörünge bilgisinden (CelesTrak, günde birkaç kez güncellenir) tarayıcınızda SGP4 yöntemiyle hesaplanır. <span id="veri-yasi"></span></li>
+      <li>Yörünge bilgisi eskidikçe hata büyür; genellikle <strong>bir iki dakikalık</strong> sapma beklenir. İstasyonlar motor ateşlediğinde (yörünge yükseltme) veri yenilenene kadar daha büyük sapma olabilir. Birkaç dakika erken çıkın.</li>
+      <li>Hesap iki bağımsız kaynakla karşılaştırıldı. Gökbilim kütüphanesi skyfield (JPL efemerisi, aynı yörünge verisi) ile 4 şehirde 54 geçişin hepsi bulundu; zamanlar 1–2 saniye, en yüksek nokta 0,1° içinde aynı. Heavens-Above sitesinin İstanbul, Ankara ve Van için verdiği 33 ISS ve Tiangong geçişinin 29'u 2 saniye ve 1° içinde aynı çıktı; kalan 4'ü alacakaranlıkta ya da tam 10° sınırında başlayan geçişler, orada iki hesap "görünür" sayılmaya birkaç dakika farkla başlıyor.</li>
+      <li><strong>Parlaklık hesaplanmıyor.</strong> Uluslararası Uzay İstasyonu ve Tiangong en parlaklarıdır, şehir içinden de kolayca görülür. Diğerleri (Hubble, roket gövdeleri, eski uydular) daha sönüktür; çoğu zaman yalnız ışıktan uzak, karanlık yerde seçilir.</li>
+      <li>Bulut, sis ve ufku kapatan binalar ya da dağlar hesaba katılmaz. Hava durumuna ayrıca bakın.</li>
+      <li>Starlink "uydu treni" yalnız fırlatmadan sonraki birkaç gün parlak görünür; o dönemi güvenilir izleyemediğimiz için listede yok.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Veri: <a href="https://celestrak.org/">CelesTrak</a> (stations, visual grupları). Hesap: <a href="https://github.com/shashwatak/satellite-js">satellite.js</a> (MIT). İl merkezleri: Wikidata.</p>
+    <p>Kaynak kodu: <a href="https://github.com/birtohum/bu-gece-gokyuzu">github.com/birtohum/bu-gece-gokyuzu</a> · Apache-2.0</p>
+  </footer>
+</main>
+<script type="module" src="js/uygulama.js"></script>
+</body>
+</html>

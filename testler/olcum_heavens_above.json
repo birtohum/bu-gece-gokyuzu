@@ -1,0 +1,13 @@
+{
+ "ha_gecis": 33,
+ "ayni_sonuc": 29,
+ "bulunamayan": 1,
+ "ayni_olanlarda_zaman_sn": {
+  "medyan": 0.40625,
+  "en_kotu": 1.40625
+ },
+ "ayni_olanlarda_tepe_derece": {
+  "medyan": 0.22800010150327665,
+  "en_kotu": 0.5500203638261887
+ }
+}
